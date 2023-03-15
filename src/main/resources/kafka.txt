@@ -1,0 +1,13 @@
+server   ---->  server
+
+
+
+server   -->  queue   ---> server
+
+高性能，高扩展，高可靠
+
+AKF   x：高可用   y：用户划分   z：分片分治
+
+queue: 单点问题,性能问题
+
+topic  partion  副本  broker

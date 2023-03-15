@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ex.dao.PersonDao">
+
+    <select id="queryAllPerson" resultType="com.ex.entity.Person">
+        select * from person
+    </select>
+
+    <!--  <sql id="query">
+          <where>
+              <if test="username!=null and username!=''">
+                  username like concat("%",#{username},"%")
+              </if>
+          </where>
+      </sql>
+
+
+      <select id="findObjectByPage" resultType="com.db.sys.po.SysLog">
+          select *
+          from sys_logs
+          <include refid="query"></include>
+          order by createdTime desc
+          limit #{startIndex},#{pageSize}
+      </select>
+
+
+      <select id="CountRows" resultType="int">
+          select count(*)
+          from sys_logs
+          <include refid="query"></include>
+      </select>-->
+
+
+</mapper>
+

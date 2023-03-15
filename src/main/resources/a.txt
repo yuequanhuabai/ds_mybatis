@@ -1,0 +1,64 @@
+@Component
+public class DataSourceInitializer implements InitializingBean {
+
+    @Autowired
+    private DynamicDataSourceConfig dynamicDataSourceConfig;
+
+    @Autowired
+    private DataSource dataSource;
+
+    @Autowired
+    private Environment environment;
+
+    @Override
+    public void afterPropertiesSet() {
+        try {
+            String url = environment.getProperty("spring.datasource.url");
+            String username = environment.getProperty("spring.datasource.username");
+            String password = environment.getProperty("spring.datasource.password");
+            String driverClassName = environment.getProperty("spring.datasource.driver-class-name");
+
+            Class.forName(driverClassName);
+
+            List<Map<String, Object>> slaveList = querySlaveDatasource();
+            if (slaveList == null) {
+                return;
+            }
+
+            for (Map<String, Object> map : slaveList) {
+                String dataSourceName = map.get("name").toString();
+                String urlWithDbName = url.replace("/master_database", "/" + dataSourceName);
+                DataSourceBuilder factory = DataSourceBuilder.create()
+                        .driverClassName(driverClassName)
+                        .url(urlWithDbName)
+                        .username(username)
+                        .password(password)
+                        .type(DruidDataSource.class);
+
+                dynamicDataSourceConfig.addTargetDataSource(dataSourceName, factory.build());
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private List<Map<String, Object>> querySlaveDatasource() {
+        SqlSession sqlSession = null;
+        try {
+            sqlSession = new SqlSessionFactoryBuilder()
+                    .build(Resources.getResourceAsReader("mybatis-config.xml"))
+                    .openSession();
+            return sqlSession.selectList("com.example.demo.mapper.DataSourceMapper.selectSlaveDataSource");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            if (sqlSession != null) {
+                sqlSession.close();
+            }
+        }
+    }
+}
+
+
+com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceWrapper
