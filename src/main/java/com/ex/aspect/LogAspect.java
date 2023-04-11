@@ -64,12 +64,21 @@ public class LogAspect {
         String name = aClass.getName();
         System.out.println("target.class.name: "+name);
 
+
+        MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
+        String method_name = signature.getName();
+        Class[] parameterTypes = signature.getParameterTypes();
+
+        Class<?> aClass2 = proceedingJoinPoint.getTarget().getClass();
+        Method target_mothod = aClass2.getMethod(method_name, parameterTypes);
+        AopAnnotation annotation1 = target_mothod.getAnnotation(AopAnnotation.class);
+        String value = annotation1.value();
+
         MethodSignature  methodSignature11 = (MethodSignature)proceedingJoinPoint.getSignature();
         Method method1 = methodSignature11.getMethod();
         String name3 = method1.getName();
 
         Method method2 = aClass.getMethod(methodSignature11.getName(), methodSignature11.getParameterTypes());
-
 
         System.out.println("");
         System.out.println("methodSignature11.method1.name3: "+name3);
