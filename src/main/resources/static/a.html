@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot 前端Demo</title>
+</head>
+<body>
+     hello world! hello, boys!  hello girls ! hello everyone! hello mom! hello father!
+
+<form id="dataForm">
+    <label for="backendData"> get data from backendData </label>
+    <input type="text" id="backendData" readonly>
+
+    <br>
+    <button type="button" onclick="fetchData()">获取数据</button>
+
+<!--    <script>-->
+<!--        function fetchData(){-->
+<!--            fetch('http://localhost:9999/test/queryStus')-->
+<!--                .then(response=>response.text())-->
+<!--                .then(data=>{-->
+<!--                    document.getElementById('backendData').value=data;-->
+<!--                }).catch(error=>{-->
+<!--                    console.error('Error feching data: ',error);-->
+<!--            });-->
+<!--        }-->
+<!--    </script>-->
+
+    <script>
+      var xhr= new XMLHttpRequest();
+      xhr.open('GET','http://localhost:9999/test/queryStus',true);
+      xhr.onload=function (){
+          if(xhr.status>=200 && xhr.status<400){
+              // 当数据返回后，更新输入框的值
+              document.getElementById('backendData').value=xhr.responseText;
+          }else {
+              console.error('Request failed with status:',xhr.status);
+          }
+      };
+
+
+      xhr.onerror=function (){
+          console.error('Network error occurred!')
+      };
+
+      xhr.send();
+
+    </script>
+
+
+</form>
+</body>
+</html>

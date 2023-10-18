@@ -11,4 +11,6 @@ public interface StudentService {
 
     Integer insertStudent(Student student);
 
+    void getExcel();
+
 }

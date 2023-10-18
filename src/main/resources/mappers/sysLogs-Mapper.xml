@@ -9,7 +9,7 @@
     </select>
 
     <insert id="inertSysLogs">
-        INSERT INTO test1.sys_logs
+        INSERT INTO sys_logs
         (id,username, operation, `method`, params, `time`, ip, create_time)
         VALUES(#{id},#{username}, #{operation}, #{method},#{params}, #{time}, #{ip}, #{createTime});
     </insert>

@@ -12,7 +12,7 @@
 
 
     <insert id="insertDataSourceModel">
-        INSERT INTO test1.data_source_model
+        INSERT INTO data_source_model
             (dsid, ds_type, ds_name, username, password, url, driver_class_name, creator, updator, create_time, update_time)
              VALUES
             (#{dsid}, #{dsType}, #{dsName}, #{username}, #{password}, #{url}, #{driverClassName}, #{creator}, #{updator}, #{createTime}, #{updateTime});

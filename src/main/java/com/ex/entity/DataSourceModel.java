@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class DataSourceModel {
 
+    private String id;
     private String dsid;
     private String dsType;
     private String dsName;
@@ -18,6 +19,13 @@ public class DataSourceModel {
     private Date createTime;
     private Date updateTime;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getDsid() {
         return dsid;
