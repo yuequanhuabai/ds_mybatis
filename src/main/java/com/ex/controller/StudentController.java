@@ -77,5 +77,10 @@ public class StudentController {
         return peoples;
     }
 
+    // 官网:
+    // mime 类型
+    // contextType: https://www.iana.org/assignments/media-types/media-types.xhtml
+
+
 
 }
