@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://43.139.10.159:3306/test?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
-    username: remote_user
-#    password: root
-    password: Al;098,./+-3
+#    username: remote_user
+    username: root
+    password: Aa+123456
 
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
