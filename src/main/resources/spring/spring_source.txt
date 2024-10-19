@@ -93,21 +93,48 @@ BeanFactory接口：
 
 
 
+不同的阶段处理不同的工作，应该怎么办？
+
+观察者模式：
+
+监听器；监听事件；多播器（广播器）；
+
+InitApplicationEventMulticaster();
+
+registerListeners();
 
 
 
+核心接口：
+BeanFactory
+Aware
+BeanDefinition
+BeanDefinitionReader
+BeanFactoryPostProcessor
+BeanPostProcessor
+Environment  -->  StandardEnvironment-->System.getEnv();System.getProperties();
+FactoryBean
+
+
+BeanFactory和factoryBean有什么区别？
+相同：
+都是用来创建Bean对象的；
+
+不同：
+BeanFactory的时候必须要遵循Spring的完整Bean创建过程；
+但是FactoryBean只需要调用getObject就可以返回具体的对象，整个对象的创建是用户自己来控制的，更加灵活；
+
+FactoryBean：
+getObject，isSingleton，getObjectType
+
+FactoryBeanRegistrySupport
+factory.getObject();
 
 
 
-
-
-
-
-
-
-
-
-
+一级缓存：singletonObjects（没有执行factory.getObject()； 获取自定义的FactoryBean）
+二级缓存：
+三级缓存：
 
 
 
