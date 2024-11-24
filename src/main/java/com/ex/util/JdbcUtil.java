@@ -8,9 +8,9 @@ import java.util.List;
 
 public class JdbcUtil {
 
-    public static final String URL = "jdbc:mysql://43.139.10.159:3306/test?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false";
-    public static final String USERNAME = "remote_user";
-    public static final String PASSWORD = "Al;098,./+-3";
+    public static final String URL = "jdbc:mysql://localhost:3306/test?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false";
+    public static final String USERNAME = "root";
+    public static final String PASSWORD = "Aa+123456";
     public static final String SQL = "select * from data_source_model";
 
     public static Connection conn = null;
