@@ -1,10 +1,6 @@
 package com.ex.controller;
 
 
-import com.ex.dao.DataSourceModelDao;
-import com.ex.dao.PersonDao;
-import com.ex.ds.DynamicDataSourceContextHolder;
-import com.ex.entity.Person;
 import com.ex.entity.Student;
 import com.ex.service.StudentService;
 import org.slf4j.Logger;
@@ -25,11 +21,7 @@ public class StudentController {
     @Resource
     private StudentService studentService;
 
-    @Resource
-    private PersonDao personDao;
 
-    @Resource
-    private DataSourceModelDao dataSourceModelDao;
 
 
     @GetMapping("/queryStus")
@@ -68,14 +60,7 @@ public class StudentController {
     }
 
 
-    @PostMapping("/queryPerson")
-    public List<Person> queryPerson() {
-        DynamicDataSourceContextHolder.clearDataSource();
-        DynamicDataSourceContextHolder.setDataSource("test2");
-        List<Person> peoples = personDao.queryAllPerson();
 
-        return peoples;
-    }
 
     // 官网:
     // mime 类型
