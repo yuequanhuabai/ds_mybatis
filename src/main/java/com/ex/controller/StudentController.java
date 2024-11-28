@@ -24,7 +24,7 @@ public class StudentController {
 
 
 
-    @GetMapping("/queryStus")
+    @PostMapping("/queryStus")
     public List<Student> queryStudents() {
 
 //        DynamicDataSourceContextHolder.clearDataSource();
