@@ -14,30 +14,34 @@ spring:
       maxActive: 100
       maxWait: 60000
       min-idle: 5
-  aop:
-    proxy-target-class: false
-  devtools:
-    restart:
-      enabled: true #设置开启热部署
-      additional-paths: src/main/java
-      additional-exclude: WEB-INF/**
-    livereload:
-      enabled: true
+
+
+#  aop:
+#    proxy-target-class: false
+
+
+#  devtools:
+#    restart:
+#      enabled: true #设置开启热部署
+#      additional-paths: src/main/java
+#      additional-exclude: WEB-INF/**
+#    livereload:
+#      enabled: true
 
   #springboot 整合quartz框架
-  quartz:
-    job-store-type: jdbc
-    properties:
-      org:
-        quartz:
-          scheduler:
-            instanceName: MyQuartzScheduler
-          threadPool:
-            threadCount: 5
-          jobStore:
-            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
-            tablePrefix: QRTZ_
-            isClustered: true
+#  quartz:
+#    job-store-type: jdbc
+#    properties:
+#      org:
+#        quartz:
+#          scheduler:
+#            instanceName: MyQuartzScheduler
+#          threadPool:
+#            threadCount: 5
+#          jobStore:
+#            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+#            tablePrefix: QRTZ_
+#            isClustered: true
 
 
 mybatis:

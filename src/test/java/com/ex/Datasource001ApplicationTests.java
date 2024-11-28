@@ -1,11 +1,6 @@
 package com.ex;
 
-import com.ex.dao.DataSourceModelDao;
-import com.ex.dao.PersonDao;
 import com.ex.dao.StudentDao;
-import com.ex.dao.SysLogsDao;
-import com.ex.entity.DataSourceModel;
-import com.ex.entity.Person;
 import com.ex.entity.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -26,14 +21,7 @@ class Datasource001ApplicationTests {
     @Resource
     private StudentDao studentDao;
 
-    @Resource
-    private PersonDao personDao;
 
-    @Resource
-    private SysLogsDao sysLogsDao;
-
-    @Resource
-    private DataSourceModelDao dataSourceModelDao;
 
     @Autowired
     private DataSource dataSource;
@@ -52,9 +40,7 @@ class Datasource001ApplicationTests {
     @Test
     void contextLoads2() {
 
-        List<DataSourceModel> dataSourceModels = dataSourceModelDao.queryAll();
 
-        System.out.println(dataSourceModels);
     }
 
     @Test
@@ -92,9 +78,7 @@ class Datasource001ApplicationTests {
     void contextLoads4() {
 
 //        DynamicDataSourceContextHolder.setDataSource("test2");
-        List<Person> peoples = personDao.queryAllPerson();
 
-        System.out.println(peoples);
     }
 
     @Test
