@@ -47,10 +47,7 @@ public class StudentController {
         return students;
     }
 
-    @RequestMapping("getFile")
-    public void getFile() {
-        studentService.getExcel();
-    }
+
 
 
     @PostMapping("/insertStu")
