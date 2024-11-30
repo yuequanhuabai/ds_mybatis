@@ -4,6 +4,8 @@
 
 <mapper namespace="StudentMapperOracle">
 
+<!--<mapper namespace="com.ex.dao.StudentDao">-->
+
     <select id="queryStus" resultType="com.ex.entity.Student">
         select * from student
     </select>
