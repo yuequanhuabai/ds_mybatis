@@ -24,7 +24,7 @@ public class StudentController {
 
 
 
-    @GetMapping("/queryStus")
+    @PostMapping("/queryStus")
     public List<Student> queryStudents() {
 
 //        DynamicDataSourceContextHolder.clearDataSource();
@@ -50,11 +50,11 @@ public class StudentController {
 
 
 
-    @PostMapping("/insertStu")
-    public Integer insertStu(@RequestBody Student student) {
-        Integer integer = studentService.insertStudent(student);
-        return integer;
-    }
+//    @PostMapping("/insertStu")
+//    public Integer insertStu(@RequestBody Student student) {
+//        Integer integer = studentService.insertStudent(student);
+//        return integer;
+//    }
 
 
 

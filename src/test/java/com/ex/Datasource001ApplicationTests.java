@@ -12,7 +12,9 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 @Slf4j
@@ -32,8 +34,8 @@ class Datasource001ApplicationTests {
 
      @Test
     void contextLoads() {
-
-        List<Student> students = studentDao.queryStus();
+Map<String, Object> map = new HashMap<String, Object>();
+        List<Student> students = studentDao.queryStus(map);
         System.out.println(students);
     }
 

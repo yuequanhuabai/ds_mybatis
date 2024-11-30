@@ -3,6 +3,7 @@ package com.ex;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 import javax.management.InstanceAlreadyExistsException;
@@ -14,6 +15,7 @@ import javax.management.NotCompliantMBeanException;
 @MapperScan("com.ex.dao")
 //@MapperScan(value={"com.ex.dao"})
 //@MapperScans(value={"com.ex.dao","com.ex.dao2"})
+@ImportResource("classpath:pro-db.xml")
 @SpringBootApplication
 public class Datasource001Application {
 

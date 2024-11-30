@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -18,16 +20,17 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> queryStus(String name, Integer pageSize, Integer pageNum) {
-        List<Student> students = studentDao.queryStus();
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<Student> students = studentDao.queryStus(map);
         return students;
     }
 
 
-    @Override
-    public Integer insertStudent(Student student) {
-        Integer integer = studentDao.insertStu(student);
-        return integer;
-    }
+//    @Override
+//    public Integer insertStudent(Student student) {
+//        Integer integer = studentDao.insertStu(student);
+//        return integer;
+//    }
 
 
 
