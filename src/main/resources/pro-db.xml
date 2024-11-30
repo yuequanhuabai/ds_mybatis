@@ -4,7 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-    <bean id="dataSourceOracle" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <bean id="dataSourceOracle" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
         <property name="name" value="dataSourceOracle"/>
         <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
         <property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL"/>
@@ -24,10 +25,10 @@
     <bean id="sqlSessionFactoryOracle" class="org.mybatis.spring.SqlSessionFactoryBean">
         <qualifier value="main"/>
         <property name="dataSource" ref="dataSourceOracle"/>
-<!--        <property name="configLocation" value="classpath:"-->
+        <!--        <property name="configLocation" value="classpath:"-->
         <property name="mapperLocations">
             <list>
-<!--                <value>classpath:mappers/mysql/*-Mapper.xml</value>-->
+                <!--                <value>classpath:mappers/mysql/*-Mapper.xml</value>-->
                 <value>classpath:mappers/oracle/*-Mapper.xml</value>
             </list>
         </property>
@@ -38,21 +39,21 @@
     </bean>
 
 
-<!--    <bean id="sqlSessionTemplateMysql" class="org.mybatis.spring.SqlSessionFactoryBean">-->
-<!--        <qualifier value="main"/>-->
-<!--        <property name="dataSource" ref="dataSourceMysql"/>-->
-<!--        &lt;!&ndash;        <property name="configLocation" value="classpath:"&ndash;&gt;-->
-<!--        <property name="mapperLocations">-->
-<!--            <list>-->
-<!--                                <value>classpath:mappers/mysql/*-Mapper.xml</value>-->
-<!--&lt;!&ndash;                <value>classpath:mappers/oracle/*-Mapper.xml</value>&ndash;&gt;-->
-<!--            </list>-->
-<!--        </property>-->
-<!--    </bean>-->
+    <!--    <bean id="sqlSessionTemplateMysql" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+    <!--        <qualifier value="main"/>-->
+    <!--        <property name="dataSource" ref="dataSourceMysql"/>-->
+    <!--        &lt;!&ndash;        <property name="configLocation" value="classpath:"&ndash;&gt;-->
+    <!--        <property name="mapperLocations">-->
+    <!--            <list>-->
+    <!--                                <value>classpath:mappers/mysql/*-Mapper.xml</value>-->
+    <!--&lt;!&ndash;                <value>classpath:mappers/oracle/*-Mapper.xml</value>&ndash;&gt;-->
+    <!--            </list>-->
+    <!--        </property>-->
+    <!--    </bean>-->
 
 
-
-    <bean id="dataSourceMysql" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+    <!--    <bean id="dataSourceMysql" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
+    <bean id="dataSourceMysql" class="org.apache.tomcat.jdbc.pool.DataSource" init-method="createPool" lazy-init="true">
         <property name="name" value="dataSourceMysql"/>
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/test"/>
@@ -75,8 +76,8 @@
         <!--        <property name="configLocation" value="classpath:"-->
         <property name="mapperLocations">
             <list>
-                                <value>classpath:mappers/mysql/*-Mapper.xml</value>
-<!--                <value>classpath:mappers/oracle/*-Mapper.xml</value>-->
+                <value>classpath:mappers/mysql/*-Mapper.xml</value>
+                <!--                <value>classpath:mappers/oracle/*-Mapper.xml</value>-->
             </list>
         </property>
     </bean>
