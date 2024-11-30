@@ -31,6 +31,7 @@ public class StudentController {
 //        DynamicDataSourceContextHolder.setDataSource("test1");
         List<Student> students = studentService.queryStus("zhangsan", 10, 1);
         logger.info("students: " + students);
+
 //        DataSourceModel model = new DataSourceModel();
 //        model.setCreateTime(new Date());
 //        model.setCreator("zhangsan");
