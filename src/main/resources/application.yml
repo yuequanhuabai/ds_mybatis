@@ -1,3 +1,13 @@
-spring:
-  profiles:
-    active: prd
+#spring:
+#  profiles:
+#    active: prd
+
+
+
+
+server:
+  port: 7777
+
+logging:
+      level:
+        com.ex: debug
