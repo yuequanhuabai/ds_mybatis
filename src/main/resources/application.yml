@@ -4,10 +4,12 @@
 
 
 
-
 server:
   port: 7777
 
 logging:
       level:
         com.ex: debug
+spring:
+  aop:
+    proxy-target-class: false

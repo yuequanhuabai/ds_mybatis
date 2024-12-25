@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface StudentService {
 
-    List<Student> queryStus(String name, Integer pageSize, Integer pageNum);
+     List<Student> queryStus(String name, Integer pageSize, Integer pageNum);
 
-//    Integer insertStudent(Student student);
+    Integer insertStudent(Student student);
 
 
 
