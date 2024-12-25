@@ -20,4 +20,9 @@ public class StudentDaoMYSQL implements StudentDao {
         return sqlSessionTemplate.selectList("StudentMapperMysql.queryStus", map);
     }
 
+    @Override
+    public Integer insertStu(Student student) {
+        return sqlSessionTemplate.insert("StudentMapperMysql.insertStu", student);
+    }
+
 }

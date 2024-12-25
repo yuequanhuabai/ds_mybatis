@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -42,11 +43,11 @@ public class StudentController {
     }
 
 
-//    @PostMapping("/insertStu")
-//    public Integer insertStu(@RequestBody Student student) {
-//        Integer integer = studentService.insertStudent(student);
-//        return integer;
-//    }
+    @PostMapping("/insertStu")
+    public Integer insertStu(@RequestBody Student student) {
+        Integer integer = studentDao.insertStu(student);
+        return integer;
+    }
 
 
     // 官网:
