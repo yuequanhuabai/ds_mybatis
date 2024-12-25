@@ -10,6 +10,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.context.ApplicationContext;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -20,6 +22,8 @@ import java.util.UUID;
 @Component
 @Aspect
 public class LogRespect {
+
+    private ApplicationContext applicationContext;
 
     @Resource
     private StudentDao studentDao;
@@ -43,48 +47,24 @@ public class LogRespect {
         long end = System.currentTimeMillis();
         long spend = end - start;
 
+
+
+//        WorkThreadPool workThreadPool = (WorkThreadPool) applicationContext.getBean("workThreadPool");
+//        workThreadPool.execute(() -> {
+//            try {
+//                saveLog(joinPoint, start, end, spend);
+//            } catch (NoSuchMethodException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
+
         saveLog(joinPoint, start, end, spend);
 
-
         return result;
-////        Class<?> aClass = joinPoint.getTarget().getClass();
-//
-//
-//        // 获取目标类
-//
-//        Object[] args = joinPoint.getArgs();
-//        Object target = joinPoint.getTarget();
-//        String kind = joinPoint.getKind();
-//
-//
-//        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-//
-//        String name1 = signature.getName();
-//        Class[] parameterTypes = signature.getParameterTypes();
-//        Method declaredMethod = aClass.getDeclaredMethod(name1, parameterTypes);
-//        OperateLog annotation1 = declaredMethod.getAnnotation(OperateLog.class);
-//        String operate1 = annotation1.operate();
-//
-//
-//        Method method = signature.getMethod();
-//        OperateLog annotation = method.getAnnotation(OperateLog.class);
-//        String operate = annotation.operate();
-//
-//
-//        String name = signature.getName();
-//        String declaringTypeName = signature.getDeclaringTypeName();
-//        Class declaringType = signature.getDeclaringType();
-//        SourceLocation sourceLocation = joinPoint.getSourceLocation();
-//        Object aThis = joinPoint.getThis();
-//
-//        System.out.println("hello !");
-//
-//
-//        return result;
     }
 
-    private void saveLog(ProceedingJoinPoint joinPoint, long start, long end, long spend) throws NoSuchMethodException {
-
+    @Async
+    public void saveLog(ProceedingJoinPoint joinPoint, long start, long end, long spend) throws NoSuchMethodException {
         Object target = joinPoint.getTarget();
 
         // 获取拦截的目标类
