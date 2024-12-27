@@ -14,7 +14,7 @@ import javax.management.NotCompliantMBeanException;
 //@MapperScan("com.ex.dao")
 //@MapperScan(value={"com.ex.dao"})
 //@MapperScans(value={"com.ex.dao","com.ex.dao2"})
-@ImportResource("classpath:pro-db.xml")
+@ImportResource("classpath:all.xml")
 @SpringBootApplication
 public class Datasource001Application {
 

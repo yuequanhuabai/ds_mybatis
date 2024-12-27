@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
     <bean id="dataSourceOracle" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
@@ -52,8 +53,8 @@
     <!--    </bean>-->
 
 
-    <!--    <bean id="dataSourceMysql" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
-    <bean id="dataSourceMysql" class="org.apache.tomcat.jdbc.pool.DataSource" init-method="createPool" lazy-init="true">
+        <bean id="dataSourceMysql" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+<!--    <bean id="dataSourceMysql" class="org.apache.tomcat.jdbc.pool.DataSource" init-method="createPool" lazy-init="true">-->
         <property name="name" value="dataSourceMysql"/>
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/test"/>
@@ -74,7 +75,7 @@
     <bean id="sqlSessionFactoryMysql" class="org.mybatis.spring.SqlSessionFactoryBean">
         <qualifier value="other"/>
         <property name="dataSource" ref="dataSourceMysql"/>
-        <!--        <property name="configLocation" value="classpath:"-->
+                <property name="configLocation" value="classpath:mappers/mysql/configuration.xml"/>
         <property name="mapperLocations">
             <list>
                 <value>classpath:mappers/mysql/*-Mapper.xml</value>
