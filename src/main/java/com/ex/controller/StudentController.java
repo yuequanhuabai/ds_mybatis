@@ -3,10 +3,12 @@ package com.ex.controller;
 
 import com.ex.dao.StudentDao;
 import com.ex.entity.Student;
+import com.ex.service.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,18 +24,20 @@ public class StudentController {
 
     Logger logger = LoggerFactory.getLogger(StudentController.class);
 
-//    @Resource
-//    private StudentService studentService;
+    @Resource
+    private StudentService studentService;
 
     @Resource
     private StudentDao studentDao;
+
 
 
     @PostMapping("/queryStus")
     public List<Student> queryStudents() {
 
         Map<String, Object> map = new HashMap<>();
-        List<Student> students = studentDao.queryStus(map);
+        String queryString = "zhangsan";
+        List<Student> students = studentService.queryStus(queryString, 10, 1);
 //        List<Student> students = studentService.queryStus("zhangsan", 10, 1);
         logger.info("students: " + students);
 
@@ -42,11 +46,11 @@ public class StudentController {
     }
 
 
-//    @PostMapping("/insertStu")
-//    public Integer insertStu(@RequestBody Student student) {
-//        Integer integer = studentService.insertStudent(student);
-//        return integer;
-//    }
+    @PostMapping("/insertStu")
+    public Integer insertStu(@RequestBody Student student) {
+        Integer integer = studentService.insertStudent(student);
+        return integer;
+    }
 
 
     // 官网:

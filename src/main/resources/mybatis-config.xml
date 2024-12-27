@@ -1,0 +1,11 @@
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <plugins>
+        <plugin interceptor="com.ex.aop.MyatisInterceptor">
+            <!-- 这里可以配置拦截器的属性 -->
+            <!--            <property name="someProperty" value="someValue"/>-->
+        </plugin>
+    </plugins>
+</configuration>

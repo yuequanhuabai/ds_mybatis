@@ -1,3 +1,15 @@
+#spring:
+#  profiles:
+#    active: prd
+
+
+
+server:
+  port: 7777
+
+logging:
+      level:
+        com.ex: debug
 spring:
-  profiles:
-    active: prd
+  aop:
+    proxy-target-class: false
