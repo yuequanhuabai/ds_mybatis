@@ -1,6 +1,8 @@
-#spring:
-#  profiles:
-#    active: prd
+spring:
+  profiles:
+    active: prd
+
+
 
 
 
@@ -10,6 +12,6 @@ server:
 logging:
       level:
         com.ex: debug
-spring:
-  aop:
-    proxy-target-class: false
+#spring:
+#  aop:
+#    proxy-target-class: false

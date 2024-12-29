@@ -1,6 +1,6 @@
 package com.ex.service.impl;
 
-import com.ex.anon.OperateLog;
+
 import com.ex.dao.StudentDao;
 import com.ex.entity.Student;
 import com.ex.service.StudentService;
@@ -19,7 +19,6 @@ public class StudentServiceImpl implements StudentService {
     @Resource
     private StudentDao studentDao;
 
-    @OperateLog(operate = "查询用户")
     @Override
     public List<Student> queryStus(String name, Integer pageSize, Integer pageNum) {
         Map<String, Object> map = new HashMap<String, Object>();
@@ -27,7 +26,6 @@ public class StudentServiceImpl implements StudentService {
         return students;
     }
 
-    @OperateLog(operate = "新增用户")
     @Override
     public Integer insertStudent(Student student) {
         Integer integer = studentDao.insertStu(student);
