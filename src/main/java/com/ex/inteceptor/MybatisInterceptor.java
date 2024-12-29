@@ -17,6 +17,7 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +27,7 @@ import java.util.Properties;
 import java.util.UUID;
 
 
+@Service
 @Intercepts({
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class})
@@ -36,6 +38,12 @@ public class MybatisInterceptor implements Interceptor {
     private static final Logger logger = LoggerFactory.getLogger(MybatisInterceptor.class);
 
     private Integer defaultLimit;
+
+//    @Resource
+//    private UserLogDao sserLogDao;
+
+//    @Resource
+//    private SqlLogDao sqlLogDao;
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
@@ -59,7 +67,7 @@ public class MybatisInterceptor implements Interceptor {
         Timestamp timestampend = new Timestamp(end);
         long spend = end - start;
 
-        asyncLog(args,spend,invocation,methodName,timestampstart,timestampend);
+        asyncLog(args, spend, invocation, methodName, timestampstart, timestampend);
 
 
         return result;
@@ -67,8 +75,8 @@ public class MybatisInterceptor implements Interceptor {
 
     private void asyncLog(Object[] args, long spend, Invocation invocation, String methodName, Timestamp timestampstart, Timestamp timestampend) throws JsonProcessingException {
         int length = args.length;
-        logger.info("length is :{}" ,length);
-        logger.info("spend is :{}" ,spend);
+        logger.info("length is :{}", length);
+        logger.info("spend is :{}", spend);
         MappedStatement mappedStatement = (MappedStatement) args[0];
         Object parameter = args[1];
         String param = new ObjectMapper().writeValueAsString(parameter);
@@ -82,23 +90,20 @@ public class MybatisInterceptor implements Interceptor {
 //        DataSource dataSource = configuration.getEnvironment().getDataSource();
         Environment environment = configuration.getEnvironment();
 
-        DruidDataSource dataSource = (DruidDataSource)environment.getDataSource();
+        DruidDataSource dataSource = (DruidDataSource) environment.getDataSource();
 
 //        DruidDataSource dataSource = (DruidDataSource) configuration.getEnvironment().getDataSource();
 
-        String jdbcPrepareSql= getPrepareSql();
+        String jdbcPrepareSql = getPrepareSql();
 
 
         try (Connection connection = dataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(jdbcPrepareSql)
-        ){
+             PreparedStatement preparedStatement = connection.prepareStatement(jdbcPrepareSql)
+        ) {
             String url = dataSource.getUrl();
             String username = dataSource.getUsername();
             String password = dataSource.getPassword();
             String dbType = dataSource.getDbType();
-
-
-
 
 
             preparedStatement.setString(1, UUID.randomUUID().toString());
@@ -112,6 +117,22 @@ public class MybatisInterceptor implements Interceptor {
             int i = preparedStatement.executeUpdate();
 
 
+//            "INSERT INTO test.log\n" +
+//                    "(id, db_type, param, url, username, password)\n" +
+//                    "VALUES(?, ?, ?, ?, ?, ?);";
+
+//            SqlLog sqlLog = new SqlLog();
+//            sqlLog.setId(UUID.randomUUID().toString());
+//            sqlLog.setUsername(username);
+//            sqlLog.setUrl(url);
+//            sqlLog.setDbType(dbType);
+//            sqlLog.setParam(param);
+//            sqlLog.setPassword(password);
+//
+//            sqlLogDao.insert(sqlLog);
+
+            logger.info("finished");
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -120,7 +141,7 @@ public class MybatisInterceptor implements Interceptor {
     }
 
     private String getPrepareSql() {
-        String sql="INSERT INTO test.log\n" +
+        String sql = "INSERT INTO test.log\n" +
                 "(id, db_type, param, url, username, password)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?);";
 
