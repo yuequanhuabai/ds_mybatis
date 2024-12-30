@@ -3,6 +3,7 @@ package com.ex.dynamic;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.util.StringUtils;
 import com.ex.entity.DataSourceModel;
+import com.ex.utils.JDBCUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +13,7 @@ import org.springframework.util.CollectionUtils;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,18 +32,17 @@ public class DynamicDataSourceService {
 
 
      public List<DataSourceModel> findAllDataSource() throws SQLException {
-        List<DataSourceModel> list = new ArrayList<>();
-
-         Connection connection = dataSource.getConnection();
-
-         Statement statement = connection.createStatement();
-
-
-         return list;
+         List<DataSourceModel> dataModelList = JDBCUtils.getDataModelList();
+         if (CollectionUtils.isEmpty(dataModelList)) {
+             dataModelList=new ArrayList<>();
+         }
+         return dataModelList;
      }
 
 
-     public int deleteDataSourceByName(String dsName) throws SQLException {
+
+
+    public int deleteDataSourceByName(String dsName) throws SQLException {
          if(StringUtils.isEmpty(dsName)){
              return 0;
          }

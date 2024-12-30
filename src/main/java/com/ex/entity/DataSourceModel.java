@@ -27,8 +27,8 @@ public class DataSourceModel {
     private String updator;
 
 
-    private Date create_time;
+    private Date createTime;
 
-    private Date update_time;
+    private Date updateTime;
 
 }

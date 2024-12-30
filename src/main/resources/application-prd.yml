@@ -16,6 +16,7 @@ mybatis:
   mapper-locations: classpath:/mappers/*/*-Mapper.xml
 logging:
   level:
-    root: debug
+#    root: debug
+     root: info
 
 
