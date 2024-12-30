@@ -76,8 +76,8 @@ public class DynamicDataSourceService {
              throw new RuntimeException(e);
          }
 
-         DynamicDataSource dds = (DynamicDataSource) dataSource;
-         dds.addResovleDataSource(model.getDsName(), ds);
+         MyRoutingDataSource dds = (MyRoutingDataSource) dataSource;
+//         dds.addResovleDataSource(model.getDsName(), ds);
      }
 
      public void delDataSourceToResolvedCache(String dsName) throws SQLException {

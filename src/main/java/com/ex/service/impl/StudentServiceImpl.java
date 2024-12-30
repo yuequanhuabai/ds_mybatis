@@ -3,6 +3,7 @@ package com.ex.service.impl;
 
 import com.ex.dao.StudentDao;
 import com.ex.entity.Student;
+import com.ex.repository.StudentRepository;
 import com.ex.service.StudentService;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,18 @@ import java.util.Map;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    @Resource
+
     private StudentDao studentDao;
+
+    @Resource
+    private StudentRepository studentRepository;
 
     @Override
     public List<Student> queryStus(String name, Integer pageSize, Integer pageNum) {
         Map<String, Object> map = new HashMap<String, Object>();
-        List<Student> students = studentDao.queryStus(map);
+
+        List<Student> students = studentRepository.findAll();
+//        List<Student> students = studentDao.queryStus(map);
         return students;
     }
 

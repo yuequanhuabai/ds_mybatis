@@ -2,11 +2,17 @@ package com.ex.entity;
 
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Data
+@Entity
+@Table(name = "data_source_model")
 public class DataSourceModel {
 
+    @Id
     private String id;
 
     private String dsid;
@@ -30,5 +36,6 @@ public class DataSourceModel {
     private Date createTime;
 
     private Date updateTime;
+
 
 }

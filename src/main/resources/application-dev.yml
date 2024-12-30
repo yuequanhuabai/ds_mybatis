@@ -15,6 +15,29 @@ spring:
 #      maxWait: 60000
 #      min-idle: 5
 
+##################################################################################
+#      min-evictable-idle-time-millis: 30000
+#      validation-query-timeout: 1000
+#      test-on-borrow: false
+#      test-on-return: false
+#      max-pool-prepared-statement-per-connection-size: -1
+#      use-global-data-source-stat: false
+#      time-between-log-stats-millis: 60000
+##      connect-properties: druid.stat.mergeSql=true;druid.stat.sqlowSqlMillis=5000
+
+##################################################################################
+
+#
+#      connection-properties: druid.stat.mergeSql=true;druid.stat.sqlowSqlMillis=5000
+
+#    url: jdbc:mysql://localhost:3306/test?useSSL=false
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: Aa+123456
+
+#mybatis:
+#  mapper-locations: classpath:/mappers/*/*-Mapper.xml
+
 
 #  aop:
 #    proxy-target-class: false
