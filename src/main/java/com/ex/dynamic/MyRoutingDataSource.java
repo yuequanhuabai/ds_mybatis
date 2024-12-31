@@ -13,4 +13,5 @@ public class MyRoutingDataSource extends AbstractRoutingDataSource {
     protected Object determineCurrentLookupKey() {
         return DataSourceContextHolder.getDataSourceType();
     }
+
 }

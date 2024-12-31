@@ -24,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> queryStus(String name, Integer pageSize, Integer pageNum) {
         Map<String, Object> map = new HashMap<String, Object>();
-
+//        DataSourceContextHolder.setDataSourceType("ds2");
         List<Student> students = studentRepository.findAll();
 //        List<Student> students = studentDao.queryStus(map);
         return students;
