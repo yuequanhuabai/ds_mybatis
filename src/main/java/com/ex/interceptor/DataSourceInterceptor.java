@@ -14,12 +14,7 @@
 //
 //    @Override
 //    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-////        String dsId = request.getParameter(DS_ID_PARAM);
-////        if (dsId == null && !dsId.isEmpty()) {
-////            DataSourceContextHolder.setDataSourceType(dsId);
-////        } else {
-////            DataSourceContextHolder.setDataSourceType("master");
-////        }
+//
 //
 //        return true;
 //    }

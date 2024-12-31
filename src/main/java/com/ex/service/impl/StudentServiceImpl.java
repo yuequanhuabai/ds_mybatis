@@ -2,6 +2,7 @@ package com.ex.service.impl;
 
 
 import com.ex.dao.StudentDao;
+import com.ex.dynamic.DataSourceContextHolder;
 import com.ex.entity.Student;
 import com.ex.repository.StudentRepository;
 import com.ex.service.StudentService;
@@ -24,8 +25,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> queryStus(String name, Integer pageSize, Integer pageNum) {
         Map<String, Object> map = new HashMap<String, Object>();
-//        DataSourceContextHolder.setDataSourceType("ds2");
+//
+        DataSourceContextHolder.setDataSourceType("ds2");
         List<Student> students = studentRepository.findAll();
+//        DataSourceContextHolder.clearDataSourceType();
 //        List<Student> students = studentDao.queryStus(map);
         return students;
     }

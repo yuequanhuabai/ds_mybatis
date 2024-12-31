@@ -31,8 +31,6 @@ public class DataSourceConfiguration {
         druidDataSource.setPassword(password);
         myRoutingDataSource.setDefaultTargetDataSource(druidDataSource);
 
-//        Map<Object, Object> targetDataSources = new HashMap<>();
-//        targetDataSources.put("ds1", druidDataSource);
         myRoutingDataSource.setTargetDataSources(new HashMap<>());
         return myRoutingDataSource;
     }
