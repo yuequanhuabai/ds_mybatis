@@ -120,7 +120,7 @@ public class MybatisInterceptor implements Interceptor {
     }
 
     private String getPrepareSql() {
-        String sql="INSERT INTO test.log\n" +
+        String sql="INSERT INTO log\n" +
                 "(id, db_type, param, url, username, password)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?);";
 

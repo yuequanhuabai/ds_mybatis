@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="UserLogMapperMysql">
+<mapper namespace="UserLogMapperOracle">
 
 <!--    <select id="queryStus" resultType="com.ex.entity.Student">-->
 <!--        select * from student-->
@@ -10,11 +10,10 @@
 
     <insert id="insertUserLog">
         INSERT INTO user_log
-        (id, username, operation, target_class, `method`,
-         param, `start`, `end`, spend, ip)
+        (id, username, operation, target_class, "method",
+         param, "start", "end", spend, ip)
         VALUES (#{id}, #{username}, #{operation}, #{targetClass}, #{method},
                 #{param}, #{start}, #{end}, #{spend}, #{ip})
-
     </insert>
 
     <!--  <sql id="query">

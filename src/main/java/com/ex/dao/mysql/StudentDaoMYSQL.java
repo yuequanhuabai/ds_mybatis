@@ -3,13 +3,14 @@ package com.ex.dao.mysql;
 import com.ex.dao.StudentDao;
 import com.ex.entity.Student;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-
+@Primary
 @Repository
 public class StudentDaoMYSQL implements StudentDao {
 
