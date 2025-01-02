@@ -5,6 +5,7 @@
 
 <!--    <import resource="classpath:configuration.xml"/>-->
     <import resource="classpath:pro-db.xml"/>
+    <import resource="bean.xml"/>
 
 <!--    <import resource="classpath:mappers/mysql/configuration.xml"/>-->
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    init-method="init" destroy-method="cleanup"-->
+
+    <bean id="myBean" class="com.ex.service.MyBean" scope="singleton"
+    init-method="init" destroy-method="cleanup"
+    >
+        <property name="id" value="value1"/>
+        <property name="myBean2" ref="myBean2"/>
+    </bean>
+
+    <bean id="myBean2" name="mybean2" class="com.ex.service.MyBean2"/>
+</beans>
